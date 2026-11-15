@@ -1,0 +1,327 @@
+{
+  "descripcion": "Modelos finales del nivel del Tarqui (estrategia directa, un modelo por horizonte).",
+  "target": "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+  "horizontes_h": [
+    5,
+    9
+  ],
+  "objetivo": "delta",
+  "reconstruccion_nivel": "nivel_cm(t+τ) = (x[TARGET](t) + salida) * (max - min) + min",
+  "escala_objetivo_cm": {
+    "min": 44.46140833333333,
+    "max": 382.6354083333333
+  },
+  "pesos": {
+    "alfa": 0.0,
+    "regla": "w = 1 + alfa * 1[y_obs(t+tau) >= P95 train o lluvia areal(t) >= 0.1 mm]",
+    "p95_train_cm": 138.80552908989986,
+    "umbral_lluvia_mm": 0.1,
+    "pluviometros_areal": [
+      "PLU_Narancay__Lluvia_Tot"
+    ]
+  },
+  "variables": "todas",
+  "features_tabulares": [
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+    "PLU_Narancay__Lluvia_Tot",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_lag_1h",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_lag_3h",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_lag_6h",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_lag_12h",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_lag_24h",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_delta_1h",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg_delta_3h",
+    "PLU_Narancay__Lluvia_Tot_acum_3h",
+    "PLU_Narancay__Lluvia_Tot_acum_6h",
+    "PLU_Narancay__Lluvia_Tot_acum_24h",
+    "PLU_Narancay__Lluvia_Tot_acum_72h",
+    "PLU_Narancay__Lluvia_Tot_acum_2h",
+    "PLU_Narancay__Lluvia_Tot_acum_12h",
+    "PLU_Narancay__Lluvia_Tot_max_3h",
+    "PLU_Narancay__Lluvia_Tot_max_6h",
+    "PLU_Narancay__Lluvia_Tot_api",
+    "AREAL_Media__Lluvia_Tot",
+    "AREAL_Media__Lluvia_Tot_acum_3h",
+    "AREAL_Media__Lluvia_Tot_acum_6h",
+    "AREAL_Media__Lluvia_Tot_acum_24h",
+    "AREAL_Media__Lluvia_Tot_acum_72h",
+    "AREAL_Media__Lluvia_Tot_acum_2h",
+    "AREAL_Media__Lluvia_Tot_acum_12h",
+    "AREAL_Media__Lluvia_Tot_max_3h",
+    "AREAL_Media__Lluvia_Tot_max_6h",
+    "AREAL_Media__Lluvia_Tot_lag_1h",
+    "AREAL_Media__Lluvia_Tot_lag_2h",
+    "AREAL_Media__Lluvia_Tot_lag_3h",
+    "AREAL_Media__Lluvia_Tot_lag_4h",
+    "AREAL_Media__Lluvia_Tot_lag_5h",
+    "AREAL_Media__Lluvia_Tot_lag_6h",
+    "AREAL_Media__Lluvia_Tot_api",
+    "hora_sin",
+    "hora_cos",
+    "mes_sin",
+    "mes_cos",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg__imp",
+    "PLU_Narancay__Lluvia_Tot__imp"
+  ],
+  "features_secuencia": [
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+    "PLU_Narancay__Lluvia_Tot",
+    "PLU_Narancay__Lluvia_Tot_acum_3h",
+    "PLU_Narancay__Lluvia_Tot_acum_6h",
+    "PLU_Narancay__Lluvia_Tot_acum_24h",
+    "PLU_Narancay__Lluvia_Tot_acum_72h",
+    "PLU_Narancay__Lluvia_Tot_acum_2h",
+    "PLU_Narancay__Lluvia_Tot_acum_12h",
+    "PLU_Narancay__Lluvia_Tot_max_3h",
+    "PLU_Narancay__Lluvia_Tot_max_6h",
+    "PLU_Narancay__Lluvia_Tot_api",
+    "AREAL_Media__Lluvia_Tot",
+    "AREAL_Media__Lluvia_Tot_acum_3h",
+    "AREAL_Media__Lluvia_Tot_acum_6h",
+    "AREAL_Media__Lluvia_Tot_acum_24h",
+    "AREAL_Media__Lluvia_Tot_acum_72h",
+    "AREAL_Media__Lluvia_Tot_acum_2h",
+    "AREAL_Media__Lluvia_Tot_acum_12h",
+    "AREAL_Media__Lluvia_Tot_max_3h",
+    "AREAL_Media__Lluvia_Tot_max_6h",
+    "AREAL_Media__Lluvia_Tot_api",
+    "hora_sin",
+    "hora_cos",
+    "mes_sin",
+    "mes_cos",
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg__imp",
+    "PLU_Narancay__Lluvia_Tot__imp"
+  ],
+  "lookback_h": 24,
+  "entrada_arboles": "matriz (n, len(features_tabulares)) escalada, columnas en este orden, fila = instante t",
+  "entrada_redes": "tensor (n, lookback_h, len(features_secuencia)) escalado; último paso = instante t",
+  "escaladores": "Docs/resources/escaladores_tarqui.csv",
+  "horizontes_json": "Docs/resources/horizontes_tarqui.json",
+  "catalogo": "Docs/resources/catalogo_features_tarqui.csv",
+  "modulo_variables": "src/data_prep/variables_rio.py (calcular_variables + escalar)",
+  "config_variables": {
+    "target": "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+    "ventanas_lluvia_base_h": [
+      3,
+      6,
+      24,
+      72
+    ],
+    "ventanas_lluvia_extra_h": [
+      2,
+      12
+    ],
+    "maximos_lluvia_h": [
+      3,
+      6
+    ],
+    "lags_lluvia_h": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "lags_lluvia_por_estacion": false,
+    "api_k": 0.9,
+    "api_ventana_h": 72,
+    "lags_nivel_h": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ],
+    "deltas_nivel_h": [
+      1,
+      3
+    ],
+    "estaciones_areales": null,
+    "variables_extendidas": true
+  },
+  "arquitectura_redes": {
+    "clase": "RegresorRecurrente: nn.LSTM|nn.RNN(batch_first) -> último paso -> Linear(hidden,32) -> ReLU -> Linear(32,1)",
+    "n_variables": 27
+  },
+  "modelos": {
+    "RF|h5": {
+      "familia": "RandomForest",
+      "horizonte": 5,
+      "config_id": "RF_c06",
+      "parametros": {
+        "n_estimators": 478,
+        "max_depth": 15,
+        "min_samples_leaf": 9,
+        "max_features": 0.52
+      },
+      "archivo": "RF_h5.joblib"
+    },
+    "XGB|h5": {
+      "familia": "XGBoost",
+      "horizonte": 5,
+      "config_id": "XGB_c09",
+      "parametros": {
+        "learning_rate": 0.0361,
+        "max_depth": 3,
+        "subsample": 0.66,
+        "colsample_bytree": 0.64,
+        "min_child_weight": 2,
+        "reg_lambda": 3.88
+      },
+      "archivo": "XGB_h5.json",
+      "mejor_iteracion": 473
+    },
+    "ADA|h5": {
+      "familia": "AdaBoost",
+      "horizonte": 5,
+      "config_id": "ADA_c16",
+      "parametros": {
+        "max_depth": 5,
+        "n_estimators": 74,
+        "learning_rate": 0.044,
+        "loss": "linear"
+      },
+      "archivo": "ADA_h5.joblib"
+    },
+    "RNN|h5": {
+      "familia": "RNN",
+      "horizonte": 5,
+      "config_id": "RNN_c04",
+      "parametros": {
+        "celda": "rnn",
+        "hidden_size": 128,
+        "num_layers": 2,
+        "dropout": 0.25,
+        "batch_size": 512,
+        "epocas": 100,
+        "patience": 10,
+        "lr": 0.000619,
+        "optimizador": "adamw",
+        "weight_decay": 0.0001
+      },
+      "archivo": "RNN_h5.pt",
+      "archivo_torchscript": "RNN_h5_ts.pt",
+      "mejor_iteracion": 18
+    },
+    "LSTM|h5": {
+      "familia": "LSTM",
+      "horizonte": 5,
+      "config_id": "LSTM_c02",
+      "parametros": {
+        "celda": "lstm",
+        "hidden_size": 32,
+        "num_layers": 2,
+        "dropout": 0.04,
+        "batch_size": 512,
+        "epocas": 100,
+        "patience": 8,
+        "lr": 0.000904,
+        "optimizador": "adam",
+        "weight_decay": 0.0
+      },
+      "archivo": "LSTM_h5.pt",
+      "archivo_torchscript": "LSTM_h5_ts.pt",
+      "mejor_iteracion": 24
+    },
+    "RF|h9": {
+      "familia": "RandomForest",
+      "horizonte": 9,
+      "config_id": "RF_c20",
+      "parametros": {
+        "n_estimators": 316,
+        "max_depth": 12,
+        "min_samples_leaf": 7,
+        "max_features": 0.37
+      },
+      "archivo": "RF_h9.joblib"
+    },
+    "XGB|h9": {
+      "familia": "XGBoost",
+      "horizonte": 9,
+      "config_id": "XGB_c02",
+      "parametros": {
+        "learning_rate": 0.0378,
+        "max_depth": 5,
+        "subsample": 0.93,
+        "colsample_bytree": 0.71,
+        "min_child_weight": 8,
+        "reg_lambda": 7.75
+      },
+      "archivo": "XGB_h9.json",
+      "mejor_iteracion": 165
+    },
+    "ADA|h9": {
+      "familia": "AdaBoost",
+      "horizonte": 9,
+      "config_id": "ADA_c16",
+      "parametros": {
+        "max_depth": 5,
+        "n_estimators": 74,
+        "learning_rate": 0.044,
+        "loss": "linear"
+      },
+      "archivo": "ADA_h9.joblib"
+    },
+    "RNN|h9": {
+      "familia": "RNN",
+      "horizonte": 9,
+      "config_id": "RNN_c08",
+      "parametros": {
+        "celda": "rnn",
+        "hidden_size": 128,
+        "num_layers": 2,
+        "dropout": 0.09,
+        "batch_size": 64,
+        "epocas": 100,
+        "patience": 10,
+        "lr": 0.000329,
+        "optimizador": "adam",
+        "weight_decay": 0.0
+      },
+      "archivo": "RNN_h9.pt",
+      "archivo_torchscript": "RNN_h9_ts.pt",
+      "mejor_iteracion": 20
+    },
+    "LSTM|h9": {
+      "familia": "LSTM",
+      "horizonte": 9,
+      "config_id": "LSTM_c04",
+      "parametros": {
+        "celda": "lstm",
+        "hidden_size": 64,
+        "num_layers": 1,
+        "dropout": 0.11,
+        "batch_size": 64,
+        "epocas": 100,
+        "patience": 10,
+        "lr": 0.000535,
+        "optimizador": "adam",
+        "weight_decay": 0.0
+      },
+      "archivo": "LSTM_h9.pt",
+      "archivo_torchscript": "LSTM_h9_ts.pt",
+      "mejor_iteracion": 7
+    }
+  },
+  "seleccion_global": {
+    "familia": "RNN",
+    "modelo": "RNN",
+    "criterio": "empate (< 0.01) resuelto con RMSE en niveles > P95 (138.8 cm)",
+    "SS_global": 0.08866718057737236,
+    "P95_train_cm": 138.80552908989986,
+    "configuraciones": {
+      "5": "RNN_c04",
+      "9": "RNN_c08"
+    }
+  },
+  "versiones": {
+    "python": "3.15.2",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "sklearn": "1.9.1",
+    "xgboost": "3.4.1",
+    "torch": "2.15.0+cpu",
+    "shap": null
+  }
+}

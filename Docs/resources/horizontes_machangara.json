@@ -1,0 +1,100 @@
+{
+  "Tr_h": 6.838,
+  "Tr_q25_h": 4.137,
+  "Tr_q75_h": 10.603,
+  "tau1": 3,
+  "tau2": 6,
+  "margen_h": 78,
+  "umbral_prealerta_m3s": 20.0,
+  "umbral_alerta_m3s": 50.0,
+  "curva_descarga": {
+    "a": 0.000878136,
+    "H0": 20.0,
+    "p": 2.39401
+  },
+  "umbral_prealerta_cm": 86.09,
+  "umbral_alerta_cm": 116.91,
+  "ventana_max_h": 72,
+  "eventos": {
+    "n_train": 369,
+    "n_val": 64,
+    "n_test": 91,
+    "n_train_con_tr": 348
+  },
+  "cortes": {
+    "train_fin": "2022-12-13 17:00:00+00:00",
+    "val_inicio": "2022-12-17 00:00:00+00:00",
+    "val_fin": "2024-10-23 00:00:00+00:00",
+    "test_inicio": "2024-10-26 07:00:00+00:00",
+    "test_fin": "2026-09-02 08:00:00+00:00",
+    "desplazados": false
+  },
+  "metodo_tr": "centro de masa de la lluvia areal de la subcuenca Machangara -> pico; ventana 24 h, separación de tormentas 6 h, lluvia mínima 1.0 mm",
+  "estaciones_lluvia_areal": [
+    "MET_Chanlud__Lluvia_Tot",
+    "MET_ElLabrado__Lluvia_Tot",
+    "MET_TixánPTAP__Lluvia_Tot",
+    "MLI_Saucay__Lluvia_Tot",
+    "PLU_Ricaurte__Lluvia_Tot"
+  ],
+  "entradas": [
+    "LIM_MachángaraLlantera__Level_Avg",
+    "LIM_MachángaraLlantera__TempAire_Avg",
+    "MET_CebollarPTAP__HumAire_Avg",
+    "MET_CebollarPTAP__RS_W_Avg",
+    "MET_CebollarPTAP__TempAire_Avg",
+    "MET_TixánPTAP__HumAire_Avg",
+    "MET_TixánPTAP__RS_W_Avg",
+    "MET_TixánPTAP__TempAire_Avg",
+    "MET_CebollarPTAP__Lluvia_Tot",
+    "MET_TixánPTAP__Lluvia_Tot",
+    "PLU_Ricaurte__Lluvia_Tot",
+    "MET_SayausiPTAP__HumAire_Avg",
+    "MET_SayausiPTAP__RS_W_Avg",
+    "MET_SayausiPTAP__TempAire_Avg",
+    "MLI_Saucay__RS_W_Avg",
+    "MLI_Saucay__Lluvia_Tot",
+    "MET_SayausiPTAP__Lluvia_Tot"
+  ],
+  "config_variables": {
+    "target": "LIM_MachángaraLlantera__Level_Avg",
+    "ventanas_lluvia_base_h": [
+      3,
+      6,
+      24,
+      72
+    ],
+    "ventanas_lluvia_extra_h": [
+      2,
+      12
+    ],
+    "maximos_lluvia_h": [
+      3,
+      6
+    ],
+    "lags_lluvia_h": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "lags_lluvia_por_estacion": false,
+    "api_k": 0.9,
+    "api_ventana_h": 72,
+    "lags_nivel_h": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ],
+    "deltas_nivel_h": [
+      1,
+      3
+    ],
+    "estaciones_areales": null,
+    "variables_extendidas": true
+  }
+}

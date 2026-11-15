@@ -1,0 +1,927 @@
+{
+  "target": "LIM_Yanuncay-AJ-Tarqui__Level_Avg",
+  "horizontes": [
+    4,
+    7
+  ],
+  "horizontes_json": {
+    "Tr_h": 7.412,
+    "Tr_q25_h": 5.25,
+    "Tr_q75_h": 9.917,
+    "tau1": 4,
+    "tau2": 7,
+    "margen_h": 79,
+    "umbral_prealerta_cm": 178.33,
+    "umbral_alerta_cm": 199.28,
+    "ventana_max_h": 72,
+    "eventos": {
+      "n_train": 106,
+      "n_val": 15,
+      "n_test": 16,
+      "n_train_con_tr": 97
+    },
+    "cortes": {
+      "train_fin": "2022-12-13 17:00:00+00:00",
+      "val_inicio": "2022-12-17 01:00:00+00:00",
+      "val_fin": "2024-10-23 00:00:00+00:00",
+      "test_inicio": "2024-10-26 08:00:00+00:00",
+      "test_fin": "2026-09-02 08:00:00+00:00",
+      "desplazados": false
+    },
+    "metodo_tr": "centro de masa de la lluvia areal de la subcuenca Yanuncay -> pico; ventana 24 h, separación de tormentas 6 h, lluvia mínima 1.0 mm",
+    "estaciones_lluvia_areal": [
+      "MET_Izhcayrrumi__Lluvia_Tot",
+      "MET_SoldadosPTAR__Lluvia_Tot",
+      "MET_Ventanas__Lluvia_Tot",
+      "MLI_YanuncayPucan__Lluvia_Tot",
+      "PLU_Huizhil__Lluvia_Tot"
+    ],
+    "entradas": [
+      "LIM_Yanuncay-AJ-Tarqui__Level_Avg",
+      "MET_CebollarPTAP__HumAire_Avg",
+      "MET_CebollarPTAP__RS_W_Avg",
+      "MET_CebollarPTAP__TempAire_Avg",
+      "MET_CebollarPTAP__Lluvia_Tot",
+      "MET_SayausiPTAP__HumAire_Avg",
+      "MET_SayausiPTAP__RS_W_Avg",
+      "MET_SayausiPTAP__TempAire_Avg",
+      "PLU_Narancay__Lluvia_Tot",
+      "MET_SayausiPTAP__Lluvia_Tot",
+      "PLU_Huizhil__Lluvia_Tot"
+    ]
+  },
+  "margen_h": 79,
+  "lookback_h": 24,
+  "seed": 42,
+  "rapido": false,
+  "walk_forward": {
+    "n_bloques": 5,
+    "folds_evaluados": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "bordes_bloques": [
+      "2022-12-17 01:00:00+00:00",
+      "2023-05-01 05:00:00+00:00",
+      "2023-09-13 10:00:00+00:00",
+      "2024-01-26 15:00:00+00:00",
+      "2024-06-09 20:00:00+00:00",
+      "2024-10-23 01:00:00+00:00"
+    ],
+    "fraccion_early_stopping": 0.1
+  },
+  "presupuesto": {
+    "n_iter_arboles": 30,
+    "n_iter_redes": 12
+  },
+  "candidatos": {
+    "XGBoost": {
+      "XGB_E1": {
+        "learning_rate": 0.05,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "min_child_weight": 1,
+        "reg_lambda": 1
+      },
+      "XGB_c01": {
+        "learning_rate": 0.0622,
+        "max_depth": 5,
+        "subsample": 0.76,
+        "colsample_bytree": 0.82,
+        "min_child_weight": 3,
+        "reg_lambda": 8.35
+      },
+      "XGB_c02": {
+        "learning_rate": 0.0378,
+        "max_depth": 5,
+        "subsample": 0.93,
+        "colsample_bytree": 0.71,
+        "min_child_weight": 8,
+        "reg_lambda": 7.75
+      },
+      "XGB_c03": {
+        "learning_rate": 0.0161,
+        "max_depth": 3,
+        "subsample": 0.93,
+        "colsample_bytree": 0.65,
+        "min_child_weight": 6,
+        "reg_lambda": 5.21
+      },
+      "XGB_c04": {
+        "learning_rate": 0.0221,
+        "max_depth": 3,
+        "subsample": 0.63,
+        "colsample_bytree": 0.79,
+        "min_child_weight": 9,
+        "reg_lambda": 8.56
+      },
+      "XGB_c05": {
+        "learning_rate": 0.0412,
+        "max_depth": 8,
+        "subsample": 0.76,
+        "colsample_bytree": 0.73,
+        "min_child_weight": 6,
+        "reg_lambda": 6.52
+      },
+      "XGB_c06": {
+        "learning_rate": 0.037,
+        "max_depth": 7,
+        "subsample": 0.62,
+        "colsample_bytree": 0.88,
+        "min_child_weight": 3,
+        "reg_lambda": 9.79
+      },
+      "XGB_c07": {
+        "learning_rate": 0.0689,
+        "max_depth": 8,
+        "subsample": 0.7,
+        "colsample_bytree": 0.94,
+        "min_child_weight": 6,
+        "reg_lambda": 9.43
+      },
+      "XGB_c08": {
+        "learning_rate": 0.0179,
+        "max_depth": 4,
+        "subsample": 0.96,
+        "colsample_bytree": 0.68,
+        "min_child_weight": 5,
+        "reg_lambda": 4.79
+      },
+      "XGB_c09": {
+        "learning_rate": 0.0361,
+        "max_depth": 3,
+        "subsample": 0.66,
+        "colsample_bytree": 0.64,
+        "min_child_weight": 2,
+        "reg_lambda": 3.88
+      },
+      "XGB_c10": {
+        "learning_rate": 0.017,
+        "max_depth": 3,
+        "subsample": 0.71,
+        "colsample_bytree": 0.78,
+        "min_child_weight": 1,
+        "reg_lambda": 6.35
+      },
+      "XGB_c11": {
+        "learning_rate": 0.0398,
+        "max_depth": 5,
+        "subsample": 0.9,
+        "colsample_bytree": 0.88,
+        "min_child_weight": 3,
+        "reg_lambda": 7.07
+      },
+      "XGB_c12": {
+        "learning_rate": 0.01,
+        "max_depth": 7,
+        "subsample": 0.62,
+        "colsample_bytree": 0.69,
+        "min_child_weight": 9,
+        "reg_lambda": 8.26
+      },
+      "XGB_c13": {
+        "learning_rate": 0.0347,
+        "max_depth": 7,
+        "subsample": 0.91,
+        "colsample_bytree": 0.53,
+        "min_child_weight": 10,
+        "reg_lambda": 6.78
+      },
+      "XGB_c14": {
+        "learning_rate": 0.0739,
+        "max_depth": 6,
+        "subsample": 0.81,
+        "colsample_bytree": 0.71,
+        "min_child_weight": 3,
+        "reg_lambda": 1.84
+      },
+      "XGB_c15": {
+        "learning_rate": 0.0211,
+        "max_depth": 8,
+        "subsample": 0.68,
+        "colsample_bytree": 0.64,
+        "min_child_weight": 2,
+        "reg_lambda": 7.5
+      },
+      "XGB_c16": {
+        "learning_rate": 0.0219,
+        "max_depth": 5,
+        "subsample": 0.69,
+        "colsample_bytree": 0.82,
+        "min_child_weight": 9,
+        "reg_lambda": 5.02
+      },
+      "XGB_c17": {
+        "learning_rate": 0.0228,
+        "max_depth": 6,
+        "subsample": 0.9,
+        "colsample_bytree": 0.87,
+        "min_child_weight": 2,
+        "reg_lambda": 6.36
+      },
+      "XGB_c18": {
+        "learning_rate": 0.0989,
+        "max_depth": 5,
+        "subsample": 0.72,
+        "colsample_bytree": 0.95,
+        "min_child_weight": 3,
+        "reg_lambda": 1.88
+      },
+      "XGB_c19": {
+        "learning_rate": 0.0508,
+        "max_depth": 7,
+        "subsample": 0.67,
+        "colsample_bytree": 0.58,
+        "min_child_weight": 6,
+        "reg_lambda": 7.85
+      },
+      "XGB_c20": {
+        "learning_rate": 0.0318,
+        "max_depth": 5,
+        "subsample": 0.7,
+        "colsample_bytree": 0.68,
+        "min_child_weight": 8,
+        "reg_lambda": 9.93
+      },
+      "XGB_c21": {
+        "learning_rate": 0.0159,
+        "max_depth": 8,
+        "subsample": 0.77,
+        "colsample_bytree": 0.9,
+        "min_child_weight": 10,
+        "reg_lambda": 9.71
+      },
+      "XGB_c22": {
+        "learning_rate": 0.0107,
+        "max_depth": 8,
+        "subsample": 0.91,
+        "colsample_bytree": 0.8,
+        "min_child_weight": 8,
+        "reg_lambda": 1.5
+      },
+      "XGB_c23": {
+        "learning_rate": 0.0169,
+        "max_depth": 3,
+        "subsample": 0.88,
+        "colsample_bytree": 0.99,
+        "min_child_weight": 10,
+        "reg_lambda": 5.07
+      },
+      "XGB_c24": {
+        "learning_rate": 0.0236,
+        "max_depth": 6,
+        "subsample": 1.0,
+        "colsample_bytree": 0.66,
+        "min_child_weight": 4,
+        "reg_lambda": 2.75
+      },
+      "XGB_c25": {
+        "learning_rate": 0.0802,
+        "max_depth": 5,
+        "subsample": 0.65,
+        "colsample_bytree": 0.84,
+        "min_child_weight": 5,
+        "reg_lambda": 1.72
+      },
+      "XGB_c26": {
+        "learning_rate": 0.0761,
+        "max_depth": 6,
+        "subsample": 0.78,
+        "colsample_bytree": 0.66,
+        "min_child_weight": 6,
+        "reg_lambda": 1.71
+      },
+      "XGB_c27": {
+        "learning_rate": 0.0123,
+        "max_depth": 3,
+        "subsample": 0.79,
+        "colsample_bytree": 0.64,
+        "min_child_weight": 10,
+        "reg_lambda": 6.97
+      },
+      "XGB_c28": {
+        "learning_rate": 0.0659,
+        "max_depth": 8,
+        "subsample": 0.98,
+        "colsample_bytree": 0.97,
+        "min_child_weight": 4,
+        "reg_lambda": 9.83
+      },
+      "XGB_c29": {
+        "learning_rate": 0.0218,
+        "max_depth": 4,
+        "subsample": 0.86,
+        "colsample_bytree": 0.97,
+        "min_child_weight": 5,
+        "reg_lambda": 1.34
+      }
+    },
+    "AdaBoost": {
+      "ADA_E1": {
+        "max_depth": 3,
+        "n_estimators": 200,
+        "learning_rate": 0.1,
+        "loss": "linear"
+      },
+      "ADA_c01": {
+        "max_depth": 3,
+        "n_estimators": 61,
+        "learning_rate": 0.286,
+        "loss": "linear"
+      },
+      "ADA_c02": {
+        "max_depth": 4,
+        "n_estimators": 36,
+        "learning_rate": 0.103,
+        "loss": "linear"
+      },
+      "ADA_c03": {
+        "max_depth": 6,
+        "n_estimators": 71,
+        "learning_rate": 0.274,
+        "loss": "linear"
+      },
+      "ADA_c04": {
+        "max_depth": 3,
+        "n_estimators": 38,
+        "learning_rate": 0.204,
+        "loss": "linear"
+      },
+      "ADA_c05": {
+        "max_depth": 5,
+        "n_estimators": 140,
+        "learning_rate": 0.201,
+        "loss": "linear"
+      },
+      "ADA_c06": {
+        "max_depth": 3,
+        "n_estimators": 103,
+        "learning_rate": 0.27,
+        "loss": "linear"
+      },
+      "ADA_c07": {
+        "max_depth": 3,
+        "n_estimators": 90,
+        "learning_rate": 0.047,
+        "loss": "linear"
+      },
+      "ADA_c08": {
+        "max_depth": 6,
+        "n_estimators": 53,
+        "learning_rate": 0.242,
+        "loss": "linear"
+      },
+      "ADA_c09": {
+        "max_depth": 3,
+        "n_estimators": 141,
+        "learning_rate": 0.292,
+        "loss": "linear"
+      },
+      "ADA_c10": {
+        "max_depth": 3,
+        "n_estimators": 125,
+        "learning_rate": 0.183,
+        "loss": "linear"
+      },
+      "ADA_c11": {
+        "max_depth": 4,
+        "n_estimators": 129,
+        "learning_rate": 0.15,
+        "loss": "linear"
+      },
+      "ADA_c12": {
+        "max_depth": 3,
+        "n_estimators": 134,
+        "learning_rate": 0.259,
+        "loss": "linear"
+      },
+      "ADA_c13": {
+        "max_depth": 4,
+        "n_estimators": 59,
+        "learning_rate": 0.199,
+        "loss": "linear"
+      },
+      "ADA_c14": {
+        "max_depth": 5,
+        "n_estimators": 123,
+        "learning_rate": 0.197,
+        "loss": "linear"
+      },
+      "ADA_c15": {
+        "max_depth": 5,
+        "n_estimators": 99,
+        "learning_rate": 0.235,
+        "loss": "linear"
+      },
+      "ADA_c16": {
+        "max_depth": 5,
+        "n_estimators": 74,
+        "learning_rate": 0.044,
+        "loss": "linear"
+      },
+      "ADA_c17": {
+        "max_depth": 4,
+        "n_estimators": 34,
+        "learning_rate": 0.053,
+        "loss": "linear"
+      },
+      "ADA_c18": {
+        "max_depth": 5,
+        "n_estimators": 140,
+        "learning_rate": 0.041,
+        "loss": "linear"
+      },
+      "ADA_c19": {
+        "max_depth": 3,
+        "n_estimators": 34,
+        "learning_rate": 0.121,
+        "loss": "linear"
+      },
+      "ADA_c20": {
+        "max_depth": 4,
+        "n_estimators": 140,
+        "learning_rate": 0.126,
+        "loss": "linear"
+      },
+      "ADA_c21": {
+        "max_depth": 4,
+        "n_estimators": 32,
+        "learning_rate": 0.295,
+        "loss": "linear"
+      },
+      "ADA_c22": {
+        "max_depth": 6,
+        "n_estimators": 50,
+        "learning_rate": 0.298,
+        "loss": "linear"
+      },
+      "ADA_c23": {
+        "max_depth": 4,
+        "n_estimators": 69,
+        "learning_rate": 0.056,
+        "loss": "linear"
+      },
+      "ADA_c24": {
+        "max_depth": 4,
+        "n_estimators": 38,
+        "learning_rate": 0.285,
+        "loss": "linear"
+      },
+      "ADA_c25": {
+        "max_depth": 4,
+        "n_estimators": 141,
+        "learning_rate": 0.021,
+        "loss": "linear"
+      },
+      "ADA_c26": {
+        "max_depth": 3,
+        "n_estimators": 86,
+        "learning_rate": 0.249,
+        "loss": "linear"
+      },
+      "ADA_c27": {
+        "max_depth": 4,
+        "n_estimators": 136,
+        "learning_rate": 0.164,
+        "loss": "linear"
+      },
+      "ADA_c28": {
+        "max_depth": 4,
+        "n_estimators": 147,
+        "learning_rate": 0.209,
+        "loss": "linear"
+      },
+      "ADA_c29": {
+        "max_depth": 5,
+        "n_estimators": 66,
+        "learning_rate": 0.061,
+        "loss": "linear"
+      }
+    },
+    "RandomForest": {
+      "RF_E1": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      "RF_c01": {
+        "n_estimators": 226,
+        "max_depth": 20,
+        "min_samples_leaf": 7,
+        "max_features": 0.73
+      },
+      "RF_c02": {
+        "n_estimators": 332,
+        "max_depth": 10,
+        "min_samples_leaf": 7,
+        "max_features": 0.35
+      },
+      "RF_c03": {
+        "n_estimators": 358,
+        "max_depth": null,
+        "min_samples_leaf": 8,
+        "max_features": 0.69
+      },
+      "RF_c04": {
+        "n_estimators": 429,
+        "max_depth": 15,
+        "min_samples_leaf": 2,
+        "max_features": 0.53
+      },
+      "RF_c05": {
+        "n_estimators": 350,
+        "max_depth": 12,
+        "min_samples_leaf": 2,
+        "max_features": 0.62
+      },
+      "RF_c06": {
+        "n_estimators": 478,
+        "max_depth": 15,
+        "min_samples_leaf": 9,
+        "max_features": 0.52
+      },
+      "RF_c07": {
+        "n_estimators": 335,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "max_features": 0.33
+      },
+      "RF_c08": {
+        "n_estimators": 366,
+        "max_depth": null,
+        "min_samples_leaf": 9,
+        "max_features": 0.62
+      },
+      "RF_c09": {
+        "n_estimators": 249,
+        "max_depth": 20,
+        "min_samples_leaf": 8,
+        "max_features": 0.79
+      },
+      "RF_c10": {
+        "n_estimators": 306,
+        "max_depth": 15,
+        "min_samples_leaf": 9,
+        "max_features": 0.69
+      },
+      "RF_c11": {
+        "n_estimators": 428,
+        "max_depth": 10,
+        "min_samples_leaf": 4,
+        "max_features": 0.32
+      },
+      "RF_c12": {
+        "n_estimators": 340,
+        "max_depth": 15,
+        "min_samples_leaf": 2,
+        "max_features": 0.64
+      },
+      "RF_c13": {
+        "n_estimators": 477,
+        "max_depth": 20,
+        "min_samples_leaf": 4,
+        "max_features": 0.46
+      },
+      "RF_c14": {
+        "n_estimators": 491,
+        "max_depth": null,
+        "min_samples_leaf": 4,
+        "max_features": 0.53
+      },
+      "RF_c15": {
+        "n_estimators": 439,
+        "max_depth": 10,
+        "min_samples_leaf": 5,
+        "max_features": 0.54
+      },
+      "RF_c16": {
+        "n_estimators": 239,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "max_features": 0.63
+      },
+      "RF_c17": {
+        "n_estimators": 483,
+        "max_depth": 15,
+        "min_samples_leaf": 2,
+        "max_features": 0.65
+      },
+      "RF_c18": {
+        "n_estimators": 450,
+        "max_depth": 10,
+        "min_samples_leaf": 4,
+        "max_features": 0.72
+      },
+      "RF_c19": {
+        "n_estimators": 331,
+        "max_depth": null,
+        "min_samples_leaf": 9,
+        "max_features": 0.44
+      },
+      "RF_c20": {
+        "n_estimators": 316,
+        "max_depth": 12,
+        "min_samples_leaf": 7,
+        "max_features": 0.37
+      },
+      "RF_c21": {
+        "n_estimators": 450,
+        "max_depth": 10,
+        "min_samples_leaf": 9,
+        "max_features": 0.69
+      },
+      "RF_c22": {
+        "n_estimators": 202,
+        "max_depth": 20,
+        "min_samples_leaf": 7,
+        "max_features": 0.65
+      },
+      "RF_c23": {
+        "n_estimators": 283,
+        "max_depth": 20,
+        "min_samples_leaf": 6,
+        "max_features": 0.58
+      },
+      "RF_c24": {
+        "n_estimators": 338,
+        "max_depth": 10,
+        "min_samples_leaf": 2,
+        "max_features": 0.36
+      },
+      "RF_c25": {
+        "n_estimators": 332,
+        "max_depth": 20,
+        "min_samples_leaf": 7,
+        "max_features": 0.58
+      },
+      "RF_c26": {
+        "n_estimators": 341,
+        "max_depth": 10,
+        "min_samples_leaf": 8,
+        "max_features": 0.62
+      },
+      "RF_c27": {
+        "n_estimators": 370,
+        "max_depth": 15,
+        "min_samples_leaf": 1,
+        "max_features": 0.45
+      },
+      "RF_c28": {
+        "n_estimators": 368,
+        "max_depth": 20,
+        "min_samples_leaf": 1,
+        "max_features": 0.52
+      },
+      "RF_c29": {
+        "n_estimators": 495,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "max_features": 0.73
+      }
+    }
+  },
+  "xgb_comun": {
+    "n_estimators": 3000,
+    "early_stopping_rounds": 50,
+    "objective": "reg:squarederror",
+    "eval_metric": "rmse",
+    "tree_method": "hist",
+    "n_jobs": -1,
+    "random_state": 42,
+    "device": "cuda"
+  },
+  "paciencia_lr": 3,
+  "empate_ss": 0.01,
+  "p95_train_cm": 146.78090912459794,
+  "seleccion_por_familia": {
+    "XGBoost|h4": {
+      "config_id": "XGB_c09",
+      "cfg": {
+        "learning_rate": 0.0361,
+        "max_depth": 3,
+        "subsample": 0.66,
+        "colsample_bytree": 0.64,
+        "min_child_weight": 2,
+        "reg_lambda": 3.88
+      },
+      "SS_medio_folds": 0.10908310410578392,
+      "SS_std_folds": 0.02985005229623545,
+      "RMSE_medio_folds": 4.755219900976759,
+      "RMSE_alto_folds": 19.80340405645813,
+      "n_alto_folds": 522,
+      "mejor_iteracion_media_folds": 275.6,
+      "n_configs": 30
+    },
+    "AdaBoost|h4": {
+      "config_id": "ADA_c16",
+      "cfg": {
+        "max_depth": 5,
+        "n_estimators": 74,
+        "learning_rate": 0.044,
+        "loss": "linear"
+      },
+      "SS_medio_folds": -0.039875600387288726,
+      "SS_std_folds": 0.0955155134518391,
+      "RMSE_medio_folds": 5.469303156124353,
+      "RMSE_alto_folds": 19.879971764650886,
+      "n_alto_folds": 522,
+      "mejor_iteracion_media_folds": NaN,
+      "n_configs": 30
+    },
+    "XGBoost|h7": {
+      "config_id": "XGB_c19",
+      "cfg": {
+        "learning_rate": 0.0508,
+        "max_depth": 7,
+        "subsample": 0.67,
+        "colsample_bytree": 0.58,
+        "min_child_weight": 6,
+        "reg_lambda": 7.85
+      },
+      "SS_medio_folds": 0.12344857888422847,
+      "SS_std_folds": 0.055644240101762645,
+      "RMSE_medio_folds": 6.091174233458847,
+      "RMSE_alto_folds": 25.561830556243272,
+      "n_alto_folds": 523,
+      "mejor_iteracion_media_folds": 99.0,
+      "n_configs": 30
+    },
+    "AdaBoost|h7": {
+      "config_id": "ADA_c16",
+      "cfg": {
+        "max_depth": 5,
+        "n_estimators": 74,
+        "learning_rate": 0.044,
+        "loss": "linear"
+      },
+      "SS_medio_folds": 0.019443049849474404,
+      "SS_std_folds": 0.11812994529329929,
+      "RMSE_medio_folds": 6.741133856648139,
+      "RMSE_alto_folds": 24.33201839799994,
+      "n_alto_folds": 523,
+      "mejor_iteracion_media_folds": NaN,
+      "n_configs": 30
+    },
+    "RandomForest|h4": {
+      "config_id": "RF_c02",
+      "cfg": {
+        "n_estimators": 332,
+        "max_depth": 10,
+        "min_samples_leaf": 7,
+        "max_features": 0.35
+      },
+      "SS_medio_folds": 0.11387149800423738,
+      "SS_std_folds": 0.058915841413559294,
+      "RMSE_medio_folds": 4.693928400055951,
+      "RMSE_alto_folds": 19.429983542283164,
+      "n_alto_folds": 522,
+      "mejor_iteracion_media_folds": NaN,
+      "n_configs": 30
+    },
+    "RandomForest|h7": {
+      "config_id": "RF_c11",
+      "cfg": {
+        "n_estimators": 428,
+        "max_depth": 10,
+        "min_samples_leaf": 4,
+        "max_features": 0.32
+      },
+      "SS_medio_folds": 0.1280589822716441,
+      "SS_std_folds": 0.08373412693117743,
+      "RMSE_medio_folds": 6.023601301932923,
+      "RMSE_alto_folds": 24.979869673947142,
+      "n_alto_folds": 523,
+      "mejor_iteracion_media_folds": NaN,
+      "n_configs": 30
+    }
+  },
+  "seleccion_global": {
+    "familia": "RandomForest",
+    "modelo": "RF",
+    "criterio": "mayor SS promedio entre folds y horizontes",
+    "SS_global": 0.1209652401379407,
+    "P95_train_cm": 146.78090912459794,
+    "configuraciones": {
+      "4": "RF_c02",
+      "7": "RF_c11"
+    },
+    "empate_resuelto_por_RMSE_alto": true
+  },
+  "features_tabulares": [
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg",
+    "MET_CebollarPTAP__HumAire_Avg",
+    "MET_CebollarPTAP__RS_W_Avg",
+    "MET_CebollarPTAP__TempAire_Avg",
+    "MET_CebollarPTAP__Lluvia_Tot",
+    "MET_SayausiPTAP__HumAire_Avg",
+    "MET_SayausiPTAP__RS_W_Avg",
+    "MET_SayausiPTAP__TempAire_Avg",
+    "PLU_Narancay__Lluvia_Tot",
+    "MET_SayausiPTAP__Lluvia_Tot",
+    "PLU_Huizhil__Lluvia_Tot",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_lag_1h",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_lag_3h",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_lag_6h",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_lag_12h",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_lag_24h",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_delta_1h",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg_delta_3h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_3h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_6h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_24h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_72h",
+    "PLU_Narancay__Lluvia_Tot_acum_3h",
+    "PLU_Narancay__Lluvia_Tot_acum_6h",
+    "PLU_Narancay__Lluvia_Tot_acum_24h",
+    "PLU_Narancay__Lluvia_Tot_acum_72h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_3h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_6h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_24h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_72h",
+    "PLU_Huizhil__Lluvia_Tot_acum_3h",
+    "PLU_Huizhil__Lluvia_Tot_acum_6h",
+    "PLU_Huizhil__Lluvia_Tot_acum_24h",
+    "PLU_Huizhil__Lluvia_Tot_acum_72h",
+    "hora_sin",
+    "hora_cos",
+    "mes_sin",
+    "mes_cos",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg__imp",
+    "MET_CebollarPTAP__HumAire_Avg__imp",
+    "MET_CebollarPTAP__RS_W_Avg__imp",
+    "MET_CebollarPTAP__TempAire_Avg__imp",
+    "MET_CebollarPTAP__Lluvia_Tot__imp",
+    "MET_SayausiPTAP__HumAire_Avg__imp",
+    "MET_SayausiPTAP__RS_W_Avg__imp",
+    "MET_SayausiPTAP__TempAire_Avg__imp",
+    "PLU_Narancay__Lluvia_Tot__imp",
+    "MET_SayausiPTAP__Lluvia_Tot__imp",
+    "PLU_Huizhil__Lluvia_Tot__imp"
+  ],
+  "features_secuencia": [
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg",
+    "MET_CebollarPTAP__HumAire_Avg",
+    "MET_CebollarPTAP__RS_W_Avg",
+    "MET_CebollarPTAP__TempAire_Avg",
+    "MET_CebollarPTAP__Lluvia_Tot",
+    "MET_SayausiPTAP__HumAire_Avg",
+    "MET_SayausiPTAP__RS_W_Avg",
+    "MET_SayausiPTAP__TempAire_Avg",
+    "PLU_Narancay__Lluvia_Tot",
+    "MET_SayausiPTAP__Lluvia_Tot",
+    "PLU_Huizhil__Lluvia_Tot",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_3h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_6h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_24h",
+    "MET_CebollarPTAP__Lluvia_Tot_acum_72h",
+    "PLU_Narancay__Lluvia_Tot_acum_3h",
+    "PLU_Narancay__Lluvia_Tot_acum_6h",
+    "PLU_Narancay__Lluvia_Tot_acum_24h",
+    "PLU_Narancay__Lluvia_Tot_acum_72h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_3h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_6h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_24h",
+    "MET_SayausiPTAP__Lluvia_Tot_acum_72h",
+    "PLU_Huizhil__Lluvia_Tot_acum_3h",
+    "PLU_Huizhil__Lluvia_Tot_acum_6h",
+    "PLU_Huizhil__Lluvia_Tot_acum_24h",
+    "PLU_Huizhil__Lluvia_Tot_acum_72h",
+    "hora_sin",
+    "hora_cos",
+    "mes_sin",
+    "mes_cos",
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg__imp",
+    "MET_CebollarPTAP__HumAire_Avg__imp",
+    "MET_CebollarPTAP__RS_W_Avg__imp",
+    "MET_CebollarPTAP__TempAire_Avg__imp",
+    "MET_CebollarPTAP__Lluvia_Tot__imp",
+    "MET_SayausiPTAP__HumAire_Avg__imp",
+    "MET_SayausiPTAP__RS_W_Avg__imp",
+    "MET_SayausiPTAP__TempAire_Avg__imp",
+    "PLU_Narancay__Lluvia_Tot__imp",
+    "MET_SayausiPTAP__Lluvia_Tot__imp",
+    "PLU_Huizhil__Lluvia_Tot__imp"
+  ],
+  "dispositivo_redes": "cuda",
+  "dispositivo_xgb": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "versiones": {
+    "python": "3.12.6",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "sklearn": "1.5.2",
+    "xgboost": "3.4.1",
+    "torch": "2.14.1+cu126",
+    "shap": "0.54.1"
+  },
+  "partes_unidas": [
+    "C:\\Users\\Dell\\Documents\\maestria\\ForecastingRiverDiscargue\\Docs\\resources\\modelos_yanuncay_partes\\redes",
+    "C:\\Users\\Dell\\Documents\\maestria\\ForecastingRiverDiscargue\\Docs\\resources\\modelos_yanuncay_partes\\boost",
+    "C:\\Users\\Dell\\Documents\\maestria\\ForecastingRiverDiscargue\\Docs\\resources\\modelos_yanuncay_partes\\rf"
+  ]
+}

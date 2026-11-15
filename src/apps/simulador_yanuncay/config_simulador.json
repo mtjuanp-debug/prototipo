@@ -1,0 +1,180 @@
+{
+  "rio": "yanuncay",
+  "nombre_rio": "Yanuncay",
+  "zona_horaria": "America/Guayaquil",
+  "corrida_defecto": "final",
+  "corridas": {
+    "final": {
+      "etiqueta": "Modelos finales (Fase A, objetivo Δ, 85 variables)",
+      "rutas": {
+        "datos_dir": "Docs/resources",
+        "prefijo_particiones": "{particion}_yanuncay.parquet",
+        "escaladores": "Docs/resources/escaladores_yanuncay.csv",
+        "configuracion_modelos": "Docs/resources/modelos_yanuncay/configuracion.json",
+        "modelos_dir": "Docs/resources/modelos_yanuncay/modelos",
+        "predicciones": "Docs/resources/modelos_yanuncay/predicciones_yanuncay.parquet",
+        "contrato_modelos": "Docs/resources/modelos_yanuncay/modelos/formulacion_yanuncay.json"
+      },
+      "familia_defecto": "RF",
+      "familias": ["RF", "XGB", "ADA", "RNN", "LSTM", "Persistencia"]
+    },
+    "preliminar": {
+      "etiqueta": "Corrida preliminar (objetivo nivel, catálogo preliminar)",
+      "rutas": {
+        "datos_dir": "Docs/resources/preliminar",
+        "prefijo_particiones": "{particion}_yanuncay.parquet",
+        "escaladores": "Docs/resources/preliminar/escaladores_yanuncay.csv",
+        "configuracion_modelos": "Docs/resources/preliminar/modelos_yanuncay/configuracion.json",
+        "modelos_dir": "Docs/resources/preliminar/modelos_yanuncay/modelos",
+        "predicciones": "Docs/resources/preliminar/modelos_yanuncay/predicciones_yanuncay.parquet",
+        "contrato_modelos": null
+      },
+      "familia_defecto": "XGB",
+      "familias": ["XGB", "ADA", "LSTM", "RNN", "Persistencia"]
+    }
+  },
+  "rutas": {
+    "datos_dir": "Docs/resources",
+    "prefijo_particiones": "{particion}_yanuncay.parquet",
+    "escaladores": "Docs/resources/escaladores_yanuncay.csv",
+    "configuracion_modelos": "Docs/resources/modelos_yanuncay/configuracion.json",
+    "modelos_dir": "Docs/resources/modelos_yanuncay/modelos",
+    "predicciones": "Docs/resources/modelos_yanuncay/predicciones_yanuncay.parquet",
+    "contrato_modelos": "Docs/resources/modelos_yanuncay/modelos/formulacion_yanuncay.json"
+  },
+  "objetivo": "LIM_Yanuncay-AJ-Tarqui__Level_Avg",
+  "estaciones": {
+    "nivel": ["LIM_Yanuncay-AJ-Tarqui__Level_Avg"],
+    "lluvia": [
+      "MET_CebollarPTAP__Lluvia_Tot",
+      "MET_SayausiPTAP__Lluvia_Tot",
+      "PLU_Narancay__Lluvia_Tot",
+      "PLU_Huizhil__Lluvia_Tot"
+    ],
+    "meteo": [
+      "MET_CebollarPTAP__HumAire_Avg",
+      "MET_CebollarPTAP__RS_W_Avg",
+      "MET_CebollarPTAP__TempAire_Avg",
+      "MET_SayausiPTAP__HumAire_Avg",
+      "MET_SayausiPTAP__RS_W_Avg",
+      "MET_SayausiPTAP__TempAire_Avg"
+    ]
+  },
+  "etiquetas": {
+    "LIM_Yanuncay-AJ-Tarqui__Level_Avg": "Nivel Yanuncay AJ Tarqui (cm)",
+    "MET_CebollarPTAP__Lluvia_Tot": "Lluvia Cebollar (mm)",
+    "MET_SayausiPTAP__Lluvia_Tot": "Lluvia Sayausí (mm)",
+    "PLU_Narancay__Lluvia_Tot": "Lluvia Narancay (mm)",
+    "PLU_Huizhil__Lluvia_Tot": "Lluvia Huizhil (mm)",
+    "MET_CebollarPTAP__HumAire_Avg": "Humedad Cebollar (%)",
+    "MET_CebollarPTAP__RS_W_Avg": "Radiación Cebollar (W/m²)",
+    "MET_CebollarPTAP__TempAire_Avg": "Temperatura Cebollar (°C)",
+    "MET_SayausiPTAP__HumAire_Avg": "Humedad Sayausí (%)",
+    "MET_SayausiPTAP__RS_W_Avg": "Radiación Sayausí (W/m²)",
+    "MET_SayausiPTAP__TempAire_Avg": "Temperatura Sayausí (°C)"
+  },
+  "curva_descarga": {"a": 1.45966e-06, "H0": 20.0, "p": 3.3435},
+  "umbrales_m3s": {"prealerta": 33.0, "alerta": 50.0},
+  "horizontes": [4, 7],
+  "familia_defecto": "RF",
+  "familias": ["RF", "XGB", "ADA", "RNN", "LSTM", "Persistencia"],
+  "inicio_defecto": "2025-03-02 06:00:00+00:00",
+  "ventana_historia_h": 96,
+  "limites_fisicos": {
+    "Level_Avg": [0.0, 600.0],
+    "Lluvia_Tot": [0.0, 100.0],
+    "HumAire_Avg": [0.0, 100.0],
+    "RS_W_Avg": [0.0, 1500.0],
+    "TempAire_Avg": [-10.0, 40.0]
+  },
+  "imputacion": {
+    "ffill_nivel_max_h": 24,
+    "ffill_meteo_max_h": 3,
+    "congelado_nivel_min_h": 6,
+    "congelado_meteo_min_h": 6
+  },
+  "inicio_crecida": "2025-03-02 00:00:00+00:00",
+  "rios": {
+    "tomebamba": {
+      "nombre_rio": "Tomebamba",
+      "objetivo": "LIM_Tomebamba-DJ-Mazan__Level_Avg",
+      "horizontes_json": "Docs/resources/horizontes_tomebamba.json",
+      "corrida_defecto": "final",
+      "corridas": {
+        "final": {
+          "etiqueta": "Modelos finales (objetivo Δ, 115 variables; entrega de César, 2026-11-02)",
+          "rutas": {
+            "datos_dir": "Docs/resources",
+            "prefijo_particiones": "{particion}_tomebamba.parquet",
+            "escaladores": "Docs/resources/escaladores_tomebamba.csv",
+            "configuracion_modelos": "Docs/resources/modelos_tomebamba/configuracion.json",
+            "modelos_dir": "Docs/resources/modelos_tomebamba/modelos",
+            "predicciones": "Docs/resources/modelos_tomebamba/predicciones_tomebamba.parquet",
+            "contrato_modelos": "Docs/resources/modelos_tomebamba/modelos/formulacion_tomebamba.json"
+          },
+          "familia_defecto": "RF",
+          "familias": ["RF", "XGB", "ADA", "RNN", "LSTM", "Persistencia"]
+        }
+      },
+      "horizontes": [3, 5],
+      "familia_defecto": "RF",
+      "familias": ["RF", "XGB", "ADA", "RNN", "LSTM", "Persistencia"],
+      "inicio_defecto": "2025-07-11 14:00:00+00:00",
+      "inicio_crecida": "2025-07-11 14:00:00+00:00"
+    },
+    "tarqui": {
+      "nombre_rio": "Tarqui",
+      "objetivo": "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+      "horizontes_json": "Docs/resources/horizontes_tarqui.json",
+      "corrida_defecto": "final",
+      "corridas": {
+        "final": {
+          "etiqueta": "Modelos finales (objetivo Δ, 40 variables; entrega de Ruth)",
+          "rutas": {
+            "datos_dir": "Docs/resources",
+            "prefijo_particiones": "{particion}_tarqui.parquet",
+            "escaladores": "Docs/resources/escaladores_tarqui.csv",
+            "configuracion_modelos": "Docs/resources/modelos_tarqui/configuracion.json",
+            "modelos_dir": "Docs/resources/modelos_tarqui/modelos",
+            "predicciones": "Docs/resources/modelos_tarqui/predicciones_tarqui.parquet",
+            "contrato_modelos": "Docs/resources/modelos_tarqui/modelos/formulacion_tarqui.json"
+          },
+          "familia_defecto": "RNN",
+          "familias": ["RNN", "RF", "XGB", "LSTM", "ADA", "Persistencia"]
+        }
+      },
+      "horizontes": [5, 9],
+      "familia_defecto": "RNN",
+      "familias": ["RNN", "RF", "XGB", "LSTM", "ADA", "Persistencia"],
+      "inicio_defecto": "2025-04-04 03:00:00+00:00",
+      "inicio_crecida": "2025-04-04 03:00:00+00:00"
+    },
+    "machangara": {
+      "nombre_rio": "Machángara",
+      "objetivo": "LIM_MachángaraLlantera__Level_Avg",
+      "horizontes_json": "Docs/resources/horizontes_machangara.json",
+      "corrida_defecto": "final",
+      "corridas": {
+        "final": {
+          "etiqueta": "Modelos finales (objetivo Δ, 106 variables; entrega de Juan)",
+          "rutas": {
+            "datos_dir": "Docs/resources",
+            "prefijo_particiones": "{particion}_machangara.parquet",
+            "escaladores": "Docs/resources/escaladores_machangara.csv",
+            "configuracion_modelos": "Docs/resources/modelos_machangara/configuracion.json",
+            "modelos_dir": "Docs/resources/modelos_machangara/modelos",
+            "predicciones": "Docs/resources/modelos_machangara/predicciones_machangara.parquet",
+            "contrato_modelos": "Docs/resources/modelos_machangara/modelos/formulacion_machangara.json"
+          },
+          "familia_defecto": "RF",
+          "familias": ["RF", "XGB", "RNN", "LSTM", "ADA", "Persistencia"]
+        }
+      },
+      "horizontes": [3, 6],
+      "familia_defecto": "RF",
+      "familias": ["RF", "XGB", "RNN", "LSTM", "ADA", "Persistencia"],
+      "inicio_defecto": "2025-11-27 10:00:00+00:00",
+      "inicio_crecida": "2025-11-27 10:00:00+00:00"
+    }
+  }
+}

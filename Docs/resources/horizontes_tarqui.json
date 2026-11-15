@@ -1,0 +1,81 @@
+{
+  "Tr_h": 9.937,
+  "Tr_q25_h": 6.68,
+  "Tr_q75_h": 12.447,
+  "tau1": 5,
+  "tau2": 9,
+  "margen_h": 81,
+  "umbral_prealerta_m3s": 16.0,
+  "umbral_alerta_m3s": 30.0,
+  "curva_descarga": {
+    "a": 7.63569e-06,
+    "H0": 26.0,
+    "p": 3.01851
+  },
+  "umbral_prealerta_cm": 150.21,
+  "umbral_alerta_cm": 178.97,
+  "ventana_max_h": 72,
+  "eventos": {
+    "n_train": 64,
+    "n_val": 28,
+    "n_test": 38,
+    "n_train_con_tr": 36
+  },
+  "cortes": {
+    "train_fin": "2018-12-31 23:00:00+00:00",
+    "val_inicio": "2019-01-04 09:00:00+00:00",
+    "val_fin": "2021-11-22 10:00:00+00:00",
+    "test_inicio": "2025-02-19 17:00:00+00:00",
+    "test_fin": "2026-10-01 09:00:00+00:00",
+    "desplazados": false
+  },
+  "metodo_tr": "centro de masa de la lluvia areal de la subcuenca Tarqui -> pico; ventana 24 h, separación de tormentas 6 h, lluvia mínima 1.0 mm",
+  "estaciones_lluvia_areal": [
+    "PLU_Narancay__Lluvia_Tot"
+  ],
+  "entradas": [
+    "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+    "PLU_Narancay__Lluvia_Tot"
+  ],
+  "config_variables": {
+    "target": "LIM_Tarqui-AJ-Yanuncay__Level_Avg",
+    "ventanas_lluvia_base_h": [
+      3,
+      6,
+      24,
+      72
+    ],
+    "ventanas_lluvia_extra_h": [
+      2,
+      12
+    ],
+    "maximos_lluvia_h": [
+      3,
+      6
+    ],
+    "lags_lluvia_h": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "lags_lluvia_por_estacion": false,
+    "api_k": 0.9,
+    "api_ventana_h": 72,
+    "lags_nivel_h": [
+      1,
+      3,
+      6,
+      12,
+      24
+    ],
+    "deltas_nivel_h": [
+      1,
+      3
+    ],
+    "estaciones_areales": null,
+    "variables_extendidas": true
+  }
+}
