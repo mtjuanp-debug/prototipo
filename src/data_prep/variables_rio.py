@@ -161,14 +161,21 @@ def estacion_de(col: str) -> str:
 
 def _validar_ventana(df: pd.DataFrame, columnas: Iterable[str]) -> None:
     faltan = [c for c in columnas if c not in df.columns]
+
     if faltan:
         raise KeyError(f"Faltan columnas en la ventana: {faltan}")
+
     if not isinstance(df.index, pd.DatetimeIndex):
         raise TypeError("El índice debe ser un DatetimeIndex horario")
+
     if len(df) > 1:
-        paso = np.diff(df.index.asi8)
-        if not (paso == pd.Timedelta(hours=1).value).all():
-            raise ValueError("El índice debe ser horario, ordenado y sin horas faltantes (reindexar con NaN)")
+        diferencias = df.index[1:] - df.index[:-1]
+
+        if not (diferencias == pd.Timedelta(hours=1)).all():
+            raise ValueError(
+                "El índice debe ser horario, ordenado y sin horas faltantes "
+                "(reindexar con NaN)"
+            )
 
 
 # ---------------------------------------------------------------------------------------------------------------
